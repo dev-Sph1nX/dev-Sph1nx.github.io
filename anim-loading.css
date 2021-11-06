@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'bpg_glahoregular';
 }
 
 .all-content {
@@ -19,44 +18,177 @@
     height: 500px;
     justify-content: center;
     align-items: center;
+    background-color: #0D0D0D;
 }
 
-.la-bg-circle {
-    border-radius: 50%;
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    stroke: blue;
-    stroke-width: 100;
-    stroke-dasharray: 1350;
-    animation: ouioui 3s linear infinite;
+#loading {
+    width: 400px;
+    height: 400px;
+    position: relative;
 }
 
-.la-title {
+.hold {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    clip: rect(0px, 400px, 400px, 200px);
+    background-color: #0D0D0D;
+}
+
+.fill {
+    background-color: black;
+}
+
+.fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    clip: rect(0px, 200px, 400px, 0px);
+}
+
+.left .fill {
+    -webkit-animation: left 1s linear;
+    -moz-animation: left 1s linear;
+    animation: left 0.5s ease-in both;
+    background-color: black;
+}
+
+@keyframes left {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes left {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+    }
+}
+
+.right {
+    z-index: 3;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.right .fill {
+    z-index: 3;
+    -webkit-animation: right 1s linear;
+    -moz-animation: right 1s linear;
+    animation: right 0.5s ease-out both;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 0.5s;
+    background-color: black;
+}
+
+@keyframes right {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes right {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.la-text {
+    font-family: 'bpg_glahobold';
+    z-index: 4;
+    position: absolute;
+    animation: la-text-rotate-first 1s ease-out;
+    color: #fff;
+}
+
+.la-text-title {
     text-align: center;
     letter-spacing: -1.5px;
-    color: #fff;
     line-height: 1.5;
-    font-size: 80px;
-    width: 700px;
-    animation: la-title-rotate-first 1s ease-in;
+    font-size: 90px;
+    width: 750px;
 }
 
-@keyframes la-title-rotate-first {
-    from {
-        rotate: 10deg;
-    }
-    to {
+.la-text-rotate-second {
+    animation: la-text-rotate-second 1.2s ease-out forwards;
+    animation-delay: .3s;
+}
+
+@keyframes la-text-rotate-second {
+    0% {
         rotate: 0deg;
     }
+    50% {
+        rotate: 1deg;
+    }
+    100% {
+        rotate: 10deg;
+    }
 }
 
-@keyframes ouioui {
-    from {
-        stroke-dashoffset: 1300;
+@keyframes la-text-rotate-first {
+    0% {
+        rotate: -10deg;
     }
-    to {
-        stroke-dashoffset: 0;
+    25% {
+        rotate: -9deg;
+    }
+    100% {
+        rotate: -0deg;
+    }
+}
+
+.la-text-percentage {
+    margin-left: 10px;
+}
+
+.la-text-status {
+    margin-top: -30px;
+    text-align: end;
+}
+
+.circle {
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: black;
+    box-shadow: 200px -200px 0 7px #0D0D0D, -200px -200px 0 7px #0D0D0D, -200px 200px 0 7px #0D0D0D, 200px 200px 0 2px #0D0D0D, 0 0 0 7px #0D0D0D;
+    rotate: 90deg;
+    transform: scaleX(-1);
+    animation: border 1.5s linear forwards;
+}
+
+@keyframes border {
+    0% {
+        box-shadow: 200px -200px 0 7px #0D0D0D, -200px -200px 0 7px #0D0D0D, -200px 200px 0 7px #0D0D0D, 200px 200px 0 7px #0D0D0D, 0 0 0 4px #0D0D0D;
+    }
+    25% {
+        box-shadow: 0 -416px 0 7px #0D0D0D, -200px -200px 0 7px #0D0D0D, -200px 200px 0 7px #0D0D0D, 200px 200px 0 7px #0D0D0D, 0 0 0 4px #fff;
+    }
+    50% {
+        box-shadow: 0 -416px 0 7px #0D0D0D, -416px 0px 0 7px #0D0D0D, -200px 200px 0 7px #0D0D0D, 200px 200px 0 7px #0D0D0D, 0 0 0 4px #fff;
+    }
+    75% {
+        box-shadow: 0 -416px 0 7px #0D0D0D, -416px 0px 0 7px #0D0D0D, 0px 416px 0 7px #0D0D0D, 200px 200px 0 7px #0D0D0D, 0 0 0 4px #fff;
+    }
+    100% {
+        box-shadow: 0 -416px 0 7px #0D0D0D, -416px 0px 0 7px #0D0D0D, 0px 416px 0 7px #0D0D0D, 416px 133px 0 7px #0D0D0D, 0 0 0 4px #fff;
     }
 }
