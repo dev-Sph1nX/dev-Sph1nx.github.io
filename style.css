@@ -1,3 +1,14 @@
 .home {
     color: white;
+    font-family: 'bpg_glahoregular';
+    animation: fondu-in .5s ease-in;
+}
+
+@keyframes fondu-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

@@ -51,10 +51,11 @@ document.addEventListener("DOMContentLoaded", function() {
             circle.remove()
             createcircle(ladiv)
             latext.classList.add("la-text-rotate-second")
+            ladiv.classList.add("fondu-out")
             setTimeout(function() {
                 ladiv.remove()
-                create("div", allcontent, "Bienvenue sur le site", "home")
-            }, 1500)
+                create("div", allcontent, "Welcome to my portefolio", "home")
+            }, 1200)
         }, 2000)
     }, 1000)
 })
