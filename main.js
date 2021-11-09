@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let lapercent = document.querySelector(".la-text-percentage")
     let latext = document.querySelector(".la-text")
 
+    let body = document.querySelector(".body")
+
     setTimeout(function() {
         loading.remove()
         let circle = create("div", ladiv, "", 'circle')
@@ -54,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function() {
             ladiv.classList.add("fondu-out")
             setTimeout(function() {
                 ladiv.remove()
-                create("div", allcontent, "Welcome to my portefolio", "home")
+                body.classList.remove("hidden")
+                body.classList.add("fondu-in")
             }, 1200)
         }, 2000)
     }, 1000)
