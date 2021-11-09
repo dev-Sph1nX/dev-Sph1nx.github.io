@@ -33,32 +33,65 @@ function createcircle(parent) { // create the circle use to the animation
     create("div", left, "", "fill")
     create("div", right, "", "fill")
 }
-function checkandchangepage(){
-    switch(sessionStorage.getItem('idpage')){
+
+function loadunderline() {
+    return document.querySelector(".underline")
+}
+
+function changepageto(idDiv, filename) {
+    $(function() {
+        $("#" + idDiv).load(filename + "-content.html");
+    })
+}
+
+function underlined(navDivs) {
+    navDivs.forEach(element => {
+        if (element.classList.contains('underlined')) {
+            element.classList.remove('underlined');
+        }
+    })
+    let rightDiv = navDivs[sessionStorage.getItem('idpage')]
+    let underline = loadunderline()
+    underline.style.top = rightDiv.offsetTop + rightDiv.offsetHeight + 2 + "px"
+    underline.style.left = rightDiv.offsetLeft + rightDiv.offsetWidth - 10 + "px"
+    console.log("top " + rightDiv.offsetTop + rightDiv.offsetHeight)
+    console.log("left " + rightDiv.offsetLeft + rightDiv.offsetWidth)
+        //rightDiv.classList.add("underlined")
+}
+
+function checkandchangepage(navDivs) {
+    switch (sessionStorage.getItem('idpage')) {
+        case "-1": // when on the home page, user go back - return to the last page
+            changepageto("maincontent", "contact")
+            sessionStorage.setItem('idpage', 3)
+            underlined(navDivs)
+            break
+
+        case "0":
+            changepageto("maincontent", "home")
+            underlined(navDivs)
+            break
         case "1":
-            console.log("Page : Home // idpage :" + sessionStorage.getItem('idpage'))
-            $(function(){
-                $("#maincontent").load("home-content.html"); 
-            })
+            changepageto("maincontent", "about")
+            underlined(navDivs)
             break
         case "2":
-            console.log("Page : CV // idpage :" + sessionStorage.getItem('idpage'))
-            $(function(){
-                $("#maincontent").load("CV-content.html"); 
-            });
+            changepageto("maincontent", "cv")
+            underlined(navDivs)
             break
         case "3":
-            console.log("Page : Contact // idpage :" + sessionStorage.getItem('idpage'))
-            $(function(){
-                $("#maincontent").load("contact-content.html"); 
-            });
+            changepageto("maincontent", "contact")
+            underlined(navDivs)
             break
-        default:
-            console.log("Au sekours // idpage :" + sessionStorage.getItem('idpage'))
-            sessionStorage.setItem('idpage', 1)
+        default: // when on the last page, user keep going - return to the home page
+            changepageto("maincontent", "home")
+            sessionStorage.setItem('idpage', 0)
+            underlined(navDivs)
             break
     }
 }
+
+
 document.addEventListener("DOMContentLoaded", function() {
 
     let allcontent = document.querySelector(".all-content")
@@ -70,12 +103,18 @@ document.addEventListener("DOMContentLoaded", function() {
     let body = document.querySelector(".body")
     let indicpageDiv = document.querySelector(".b-footer-indic-page")
 
+    let homeDiv = document.querySelector(".home")
+    let aboutDiv = document.querySelector(".about")
+    let cvDiv = document.querySelector(".cv")
+    let contactDiv = document.querySelector(".contact")
 
     sessionStorage.setItem('roll', 0);
 
-    let pages = ["home", "CV", "Contact"]
-    sessionStorage.setItem('idpage', 1);
-    
+    let navDivs = [homeDiv, aboutDiv, cvDiv, contactDiv]
+    sessionStorage.setItem('idpage', 0);
+
+    let underlineDiv = loadunderline()
+
     setTimeout(function() { // Beginning animation
         loading.remove() // End 1st circle
         let circle = create("div", ladiv, "", 'circle')
@@ -93,22 +132,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 2000)
     }, 1000)
 
-    window.addEventListener('wheel', function(event){ // Check mouse wheel
-        if(event.deltaY > 0)
-            sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll'))+1) //Increment
-        else if(event.deltaY < 0)
-            sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll'))-1) // Decrement
-    
-        if(parseInt(sessionStorage.getItem('roll')) > 2){
-            sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage'))+1)
+    window.addEventListener('wheel', function(event) { // Check mouse wheel
+        if (event.deltaY > 0)
+            sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) + 1) //Increment
+        else if (event.deltaY < 0)
+            sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) - 1) //Decrement
+
+        if (parseInt(sessionStorage.getItem('roll')) >= 1) { // Check roll down
+            sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) + 1)
             sessionStorage.setItem('roll', 0);
-        }
-        else if(parseInt(sessionStorage.getItem('roll')) < -2){
-            sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage'))-1)
+        } else if (parseInt(sessionStorage.getItem('roll')) <= -1) { //  Check roll up
+            sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) - 1)
             sessionStorage.setItem('roll', 0);
         }
 
-        checkandchangepage();
+        checkandchangepage(navDivs);
     });
 })
-

@@ -10,23 +10,23 @@
     <link rel="stylesheet" href="style-content.css">
     <link rel="stylesheet" href="BPG Glaho Regular/stylesheet.css">
     <link rel="stylesheet" href="BPG Glaho Bold/stylesheet.css">
-    
+
     <script src="jquery.js"></script>
     <script src="main.js"></script>
 
-    <script> 
-        $(function(){
-            $("#maincontent").load("home-content.html"); 
+    <script>
+        $(function() {
+            $("#maincontent").load("home-content.html");
         });
-    </script> 
+    </script>
 
 </head>
 
 
 
 <body>
-    
-    
+
+
     <div class="all-content">
         <div class="la">
             <div id='loading'>
@@ -45,21 +45,30 @@
             </div>
         </div>
         <div class="body hidden">
+            <div class="underline"></div>
             <div class="b-header">
                 <div class="b-header-left">
                     <p>Lucas Leperlier</p>
                 </div>
                 <div class="b-header-right">
-                    <div class="home">
+                    <div class="home underlined" style="
+                        --percent-translate : 170%;
+                        ">
                         <p>Home</p>
                     </div>
-                    <div class="work">
-                        <p>CV</p>
-                    </div>
-                    <div class="About">
+                    <div class="about" style="
+                        --percent-translate : 170%;
+                        ">
                         <p>About</p>
                     </div>
-                    <div class="Contact">
+                    <div class="cv" style="
+                        --percent-translate : 40%;
+                        ">
+                        <p>CV</p>
+                    </div>
+                    <div class="contact" style="
+                        --percent-translate : 250%;
+                        ">
                         <p>Contact</p>
                     </div>
                 </div>
@@ -72,7 +81,7 @@
                     <img src="img/instagram-logo.png" alt="Instagram" class="instagram">
                     <img src="img/linkdin-logo.png" alt="Linkdin" class="linkdin">
                     <img src="img/facebook-logo.png" alt="Facebook" class="facebook">
-    
+
                 </div>
                 <div class="b-footer-text">
                     <p>Copyright @2021 - Lucas Leperlier - All right reserved</p>
