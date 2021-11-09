@@ -62,3 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 2000)
     }, 1000)
 })
+
+window.addEventListener('wheel', function(event){
+    console.log(event);
+});
