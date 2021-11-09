@@ -7,13 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My great portfolio</title>
     <link rel="stylesheet" href="anim-loading.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-content.css">
     <link rel="stylesheet" href="BPG Glaho Regular/stylesheet.css">
     <link rel="stylesheet" href="BPG Glaho Bold/stylesheet.css">
+    
+    <script src="jquery.js"></script>
+    <script src="main.js"></script>
+
+    <script> 
+        $(function(){
+            $("#maincontent").load("home-content.html"); 
+        });
+    </script> 
+
 </head>
 
-<body>
 
+
+<body>
+    
+    
     <div class="all-content">
         <div class="la">
             <div id='loading'>
@@ -41,7 +54,7 @@
                         <p>Home</p>
                     </div>
                     <div class="work">
-                        <p>Work</p>
+                        <p>CV</p>
                     </div>
                     <div class="About">
                         <p>About</p>
@@ -51,14 +64,9 @@
                     </div>
                 </div>
             </div>
-            <div class="b-content">
-                <div class="b-content-title-section">
-                    <h1>Student in IT</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="button">See my work</div>
-                </div>
-            </div>
+            <div id=maincontent></div>
             <div class="b-footer">
+                <div class="b-footer-indic-page"></div>
                 <div class="b-footer-icons">
                     <img src="img/discord-logo.png" alt="Discord" class="discord">
                     <img src="img/instagram-logo.png" alt="Instagram" class="instagram">
@@ -78,6 +86,5 @@
 
 </body>
 
-<script src="main.js"></script>
 
 </html>
