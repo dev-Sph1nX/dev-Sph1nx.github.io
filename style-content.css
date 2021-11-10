@@ -27,13 +27,11 @@ html {
     flex-direction: column;
 }
 
-.absolute{
-    position: absolute;
-}
 
 /*  -------- HEADER --------*/
 
 .b-header {
+    position: absolute;
     top: 0;
     left: 0;
     height: 15vh;
@@ -90,20 +88,41 @@ html {
 
 
 /*  -------- CONTENT --------*/
-#maincontent{
+
+.b-content-section {
     position: relative;
     overflow: hidden;
+    height: 70vh;
+    width: 100vw;
+}
+
+#maincontent {
+    position: absolute;
     top: 15vh;
     left: 0;
     width: 100%;
     transition: .2s;
 }
-.slide-right{
+
+.slide-right {
     left: -100vw !important;
 }
 
+#slidecontent {
+    position: absolute;
+    top: 15vh;
+    left: 100vw;
+    width: 100%;
+    transition: .2s;
+}
+
+.slide-left {
+    left: 0 !important;
+}
+
 .b-content {
-    height: 70vh;
+    /* z-index: 10; */
+    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -138,6 +157,7 @@ html {
 /*  -------- FOOTER --------*/
 
 .b-footer {
+    position: absolute;
     top: 85vh;
     left: 0;
     height: 15vh;

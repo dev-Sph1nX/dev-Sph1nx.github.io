@@ -37,7 +37,8 @@ function createcircle(parent) { // create the circle use to the animation
 function loadunderline() {
     return document.querySelector(".underline")
 }
-function loadmaincontent(){
+
+function loadmaincontent() {
     return document.querySelector("#maincontent")
 }
 
@@ -56,48 +57,50 @@ function underlined(navDivs) {
 
 }
 
-function pagetransitoright(){
+function pagetransitoright(nextpage) {
+    let contentsection = document.querySelector(".b-content-section")
+
     let mainDiv = loadmaincontent()
     mainDiv.classList.add("slide-right")
-    console.log("add")
-    setTimeout(function(){
-        mainDiv.classList.remove("slide-right")
-        console.log("removes")
-    }, 500)
+
+    let slideDiv = create("div", contentsection, "")
+    slideDiv.setAttribute('id', 'slidecontent');
+    changepageto("slidecontent", nextpage)
+
+    setTimeout(function() {
+        mainDiv.remove()
+        slideDiv.classList.remove("slide-left")
+        slideDiv.id = "maincontent"
+    }, 100)
 }
+
 function checkandchangepage(navDivs) {
     switch (sessionStorage.getItem('idpage')) {
         case "-1": // when on the home page, user go back - return to the last page
-            changepageto("maincontent", "contact")
+            pagetransitoright("contact")
             sessionStorage.setItem('idpage', 3)
-            pagetransitoright()
             underlined(navDivs)
             break
 
         case "0":
-            changepageto("maincontent", "home")
-            pagetransitoright()
+            pagetransitoright("home")
             underlined(navDivs)
             break
         case "1":
-            changepageto("maincontent", "about")
-            pagetransitoright()
+            pagetransitoright("about")
             underlined(navDivs)
             break
         case "2":
-            changepageto("maincontent", "cv")
-            pagetransitoright()
+            pagetransitoright("cv")
             underlined(navDivs)
             break
         case "3":
-            changepageto("maincontent", "contact")
-            pagetransitoright()
+            pagetransitoright("contact")
             underlined(navDivs)
             break
         default: // when on the last page, user keep going - return to the home page
-            changepageto("maincontent", "home")
             sessionStorage.setItem('idpage', 0)
-            pagetransitoright()
+            pagetransitoright("home")
             underlined(navDivs)
             break
     }
@@ -125,16 +128,17 @@ document.addEventListener("DOMContentLoaded", function() {
     let contactDiv = document.querySelector(".contact")
 
     sessionStorage.setItem('roll', 0)
+    sessionStorage.setItem('flag-roll', true)
 
     let navDivs = [homeDiv, aboutDiv, cvDiv, contactDiv]
     sessionStorage.setItem('idpage', 0)
 
     let underlineDiv = loadunderline()
-    setInterval(function(){
+    setInterval(function() {
         underlined(navDivs)
     }, 50)
-    
-    
+
+
     setTimeout(function() { // Beginning animation
         loading.remove() // End 1st circle
         let circle = create("div", ladiv, "", 'circle')
@@ -147,28 +151,42 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() { //End 2nd circle
                 ladiv.remove()
                 body.classList.remove("hidden")
-                // header.classList.add("absolute")
-                // main.classList.add("absolute")
-                // footer.classList.add("absolute")
+                    // header.classList.add("absolute")
+                    // main.classList.add("absolute")
+                    // footer.classList.add("absolute")
                 body.classList.add("fondu-in") // let the body appear
             }, 1200)
         }, 2000)
     }, 1000)
 
     window.addEventListener('wheel', function(event) { // Check mouse wheel
-        if (event.deltaY > 0)
-            sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) + 1) //Increment
-        else if (event.deltaY < 0)
-            sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) - 1) //Decrement
+        console.log("attempted -- " + sessionStorage.getItem('flag-roll'))
+        if (sessionStorage.getItem('flag-roll') === "true") {
+            console.log("got it -- " + sessionStorage.getItem('flag-roll'))
 
-        if (parseInt(sessionStorage.getItem('roll')) >= 1) { // Check roll down
-            sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) + 1)
-            sessionStorage.setItem('roll', 0);
-        } else if (parseInt(sessionStorage.getItem('roll')) <= -1) { //  Check roll up
-            sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) - 1)
-            sessionStorage.setItem('roll', 0);
+            sessionStorage.setItem('flag-roll', false)
+            console.log("flag down -- " + sessionStorage.getItem('flag-roll'))
+            setTimeout(function() {
+                sessionStorage.setItem('flag-roll', true)
+                console.log("reset -- " + sessionStorage.getItem('flag-roll'))
+            }, 500)
+            if (event.deltaY > 0)
+                sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) + 1) //Increment
+            else if (event.deltaY < 0)
+                sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) - 1) //Decrement
+
+            if (parseInt(sessionStorage.getItem('roll')) >= 1) { // Check roll down
+                sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) + 1)
+                sessionStorage.setItem('roll', 0)
+            } else if (parseInt(sessionStorage.getItem('roll')) <= -1) { //  Check roll up
+                sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) - 1)
+                sessionStorage.setItem('roll', 0)
+            }
+
+            checkandchangepage(navDivs)
+
         }
 
-        checkandchangepage(navDivs);
+
     });
 })
