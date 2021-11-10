@@ -37,6 +37,9 @@ function createcircle(parent) { // create the circle use to the animation
 function loadunderline() {
     return document.querySelector(".underline")
 }
+function loadmaincontent(){
+    return document.querySelector("#maincontent")
+}
 
 function changepageto(idDiv, filename) {
     $(function() {
@@ -50,36 +53,51 @@ function underlined(navDivs) {
     let underline = loadunderline()
     underline.style.top = rightDiv.offsetTop + rightDiv.offsetHeight + 2 + "px"
     underline.style.left = rightDiv.offsetLeft + rightDiv.offsetWidth - 10 + "px"
-    
+
 }
 
+function pagetransitoright(){
+    let mainDiv = loadmaincontent()
+    mainDiv.classList.add("slide-right")
+    console.log("add")
+    setTimeout(function(){
+        mainDiv.classList.remove("slide-right")
+        console.log("removes")
+    }, 500)
+}
 function checkandchangepage(navDivs) {
     switch (sessionStorage.getItem('idpage')) {
         case "-1": // when on the home page, user go back - return to the last page
             changepageto("maincontent", "contact")
             sessionStorage.setItem('idpage', 3)
+            pagetransitoright()
             underlined(navDivs)
             break
 
         case "0":
             changepageto("maincontent", "home")
+            pagetransitoright()
             underlined(navDivs)
             break
         case "1":
             changepageto("maincontent", "about")
+            pagetransitoright()
             underlined(navDivs)
             break
         case "2":
             changepageto("maincontent", "cv")
+            pagetransitoright()
             underlined(navDivs)
             break
         case "3":
             changepageto("maincontent", "contact")
+            pagetransitoright()
             underlined(navDivs)
             break
         default: // when on the last page, user keep going - return to the home page
             changepageto("maincontent", "home")
             sessionStorage.setItem('idpage', 0)
+            pagetransitoright()
             underlined(navDivs)
             break
     }
@@ -97,18 +115,25 @@ document.addEventListener("DOMContentLoaded", function() {
     let body = document.querySelector(".body")
     let indicpageDiv = document.querySelector(".b-footer-indic-page")
 
+    let header = document.querySelector(".b-header")
+    let main = loadmaincontent()
+    let footer = document.querySelector(".b-footer")
+
     let homeDiv = document.querySelector(".home")
     let aboutDiv = document.querySelector(".about")
     let cvDiv = document.querySelector(".cv")
     let contactDiv = document.querySelector(".contact")
 
-    sessionStorage.setItem('roll', 0);
+    sessionStorage.setItem('roll', 0)
 
     let navDivs = [homeDiv, aboutDiv, cvDiv, contactDiv]
-    sessionStorage.setItem('idpage', 0);
+    sessionStorage.setItem('idpage', 0)
 
     let underlineDiv = loadunderline()
-    underlined(navDivs)
+    setInterval(function(){
+        underlined(navDivs)
+    }, 50)
+    
     
     setTimeout(function() { // Beginning animation
         loading.remove() // End 1st circle
@@ -122,6 +147,9 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() { //End 2nd circle
                 ladiv.remove()
                 body.classList.remove("hidden")
+                // header.classList.add("absolute")
+                // main.classList.add("absolute")
+                // footer.classList.add("absolute")
                 body.classList.add("fondu-in") // let the body appear
             }, 1200)
         }, 2000)
