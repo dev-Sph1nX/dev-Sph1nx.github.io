@@ -27,14 +27,6 @@ html {
     flex-direction: column;
 }
 
-.cube {
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    background-color: white;
-    left: 1178px;
-    top: 43px;
-}
 
 
 /*  -------- HEADER --------*/
@@ -65,8 +57,8 @@ html {
     position: absolute;
     height: 2px;
     width: 20px;
-    left: 1049px;
-    top: 64px;
+    left: 0px;
+    top: 0px;
     /* // top : height + top   */
     background-color: white;
     transition: .2s ease-in;

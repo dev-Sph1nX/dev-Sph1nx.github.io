@@ -45,18 +45,12 @@ function changepageto(idDiv, filename) {
 }
 
 function underlined(navDivs) {
-    navDivs.forEach(element => {
-        if (element.classList.contains('underlined')) {
-            element.classList.remove('underlined');
-        }
-    })
+
     let rightDiv = navDivs[sessionStorage.getItem('idpage')]
     let underline = loadunderline()
     underline.style.top = rightDiv.offsetTop + rightDiv.offsetHeight + 2 + "px"
     underline.style.left = rightDiv.offsetLeft + rightDiv.offsetWidth - 10 + "px"
-    console.log("top " + rightDiv.offsetTop + rightDiv.offsetHeight)
-    console.log("left " + rightDiv.offsetLeft + rightDiv.offsetWidth)
-        //rightDiv.classList.add("underlined")
+    
 }
 
 function checkandchangepage(navDivs) {
@@ -114,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function() {
     sessionStorage.setItem('idpage', 0);
 
     let underlineDiv = loadunderline()
-
+    underlined(navDivs)
+    
     setTimeout(function() { // Beginning animation
         loading.remove() // End 1st circle
         let circle = create("div", ladiv, "", 'circle')
