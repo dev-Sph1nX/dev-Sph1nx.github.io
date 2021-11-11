@@ -1,5 +1,0 @@
-1- garder l'ancien contenu dans maincontent
-2- slide le maincontent a gauche(fait)
-3- slidecontent slide de la droite jusqu'au centre avec le nouveau content
-4- j'echange l'id slidecontent par maincontent
-

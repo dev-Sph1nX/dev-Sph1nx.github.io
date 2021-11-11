@@ -4,7 +4,6 @@ html {
 
 .hidden {
     visibility: hidden;
-    position: absolute;
 }
 
 .fondu-in {
@@ -49,10 +48,22 @@ html {
     letter-spacing: 2px;
 }
 
+.b-header-left p {
+    cursor: pointer;
+}
+
 .b-header-right {
     display: flex;
     justify-content: center;
     width: 50vw;
+}
+
+.b-header-right div {
+    cursor: pointer;
+}
+
+.b-header-right div:hover {
+    color: grey;
 }
 
 .underline {
@@ -88,6 +99,12 @@ html {
 
 
 /*  -------- CONTENT --------*/
+
+.content-position {
+    position: absolute;
+    left: 0;
+    top: 15vh;
+}
 
 .b-content-section {
     position: relative;
@@ -174,6 +191,51 @@ html {
 }
 
 .b-footer-icons img {
+    cursor: pointer;
     margin: 20px;
     width: 30px;
+}
+
+.discord-hover {
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    margin-right: -25px;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    position: absolute;
+    visibility: hidden;
+    font-size: 2vh;
+}
+
+.discord-hover::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0) transparent transparent transparent;
+}
+
+.discord:hover .discord-hover {
+    visibility: visible;
+}
+
+.opacity-in {
+    animation: fondu-in .2s linear both;
+}
+
+.opacity-out {
+    animation: fondu-out .2s linear backwards;
+}
+
+@keyframes fondu-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }

@@ -57,6 +57,12 @@ function underlined(navDivs) {
 
 }
 
+function discordhoverupdate(discordicon) {
+    let hover = document.querySelector(".discord-hover")
+    hover.style.top = discordicon.offsetTop - 25 + "px"
+    hover.style.left = discordicon.offsetLeft - 27 + "px"
+}
+
 function pagetransitoright(nextpage) {
     let contentsection = document.querySelector(".b-content-section")
 
@@ -74,33 +80,74 @@ function pagetransitoright(nextpage) {
     }, 100)
 }
 
-function checkandchangepage(navDivs) {
+function pagetransitoleft(nextpage) {
+    let contentsection = document.querySelector(".b-content-section")
+
+    let mainDiv = loadmaincontent()
+    mainDiv.id = "slidecontent"
+
+    let slideDiv = create("div", contentsection)
+    slideDiv.style.left = -100 + "vw";
+    slideDiv.setAttribute('id', 'maincontent');
+    changepageto("maincontent", nextpage)
+
+    setTimeout(function() {
+        mainDiv.remove()
+        slideDiv.style.left = 0;
+    }, 100)
+}
+
+function checkandchangepage(tag, navDivs) {
     switch (sessionStorage.getItem('idpage')) {
         case "-1": // when on the home page, user go back - return to the last page
-            pagetransitoright("contact")
+            if (tag == 'forward') {
+                pagetransitoright("contact")
+            } else if (tag == 'backward') {
+                pagetransitoleft("contact")
+            }
             sessionStorage.setItem('idpage', 3)
             underlined(navDivs)
             break
 
         case "0":
-            pagetransitoright("home")
+            if (tag == 'forward') {
+                pagetransitoright("home")
+            } else if (tag == 'backward') {
+                pagetransitoleft("home")
+            }
             underlined(navDivs)
             break
         case "1":
-            pagetransitoright("about")
+            if (tag == 'forward') {
+                pagetransitoright("about")
+            } else if (tag == 'backward') {
+                pagetransitoleft("about")
+            }
             underlined(navDivs)
             break
         case "2":
-            pagetransitoright("cv")
+            if (tag == 'forward') {
+                pagetransitoright("cv")
+            } else if (tag == 'backward') {
+                pagetransitoleft("cv")
+            }
             underlined(navDivs)
             break
         case "3":
-            pagetransitoright("contact")
+            if (tag == 'forward') {
+                pagetransitoright("contact")
+            } else if (tag == 'backward') {
+                pagetransitoleft("contact")
+            }
             underlined(navDivs)
             break
         default: // when on the last page, user keep going - return to the home page
             sessionStorage.setItem('idpage', 0)
-            pagetransitoright("home")
+            if (tag == 'forward') {
+                pagetransitoright("home")
+            } else if (tag == 'backward') {
+                pagetransitoleft("home")
+            }
             underlined(navDivs)
             break
     }
@@ -117,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let latext = document.querySelector(".la-text")
     let body = document.querySelector(".body")
     let indicpageDiv = document.querySelector(".b-footer-indic-page")
+    let logoButton = document.querySelector(".b-header-left p")
 
     let header = document.querySelector(".b-header")
     let main = loadmaincontent()
@@ -127,6 +175,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let cvDiv = document.querySelector(".cv")
     let contactDiv = document.querySelector(".contact")
 
+    let discordIcon = document.querySelector(".discord")
+    let discordhover = document.querySelector(".discord-hover")
+    let discordtag = true
+
     sessionStorage.setItem('roll', 0)
     sessionStorage.setItem('flag-roll', true)
 
@@ -136,6 +188,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let underlineDiv = loadunderline()
     setInterval(function() {
         underlined(navDivs)
+        if (discordtag)
+            discordhoverupdate(discordIcon)
     }, 50)
 
 
@@ -151,25 +205,19 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() { //End 2nd circle
                 ladiv.remove()
                 body.classList.remove("hidden")
-                    // header.classList.add("absolute")
-                    // main.classList.add("absolute")
-                    // footer.classList.add("absolute")
                 body.classList.add("fondu-in") // let the body appear
             }, 1200)
         }, 2000)
     }, 1000)
 
     window.addEventListener('wheel', function(event) { // Check mouse wheel
-        console.log("attempted -- " + sessionStorage.getItem('flag-roll'))
         if (sessionStorage.getItem('flag-roll') === "true") {
-            console.log("got it -- " + sessionStorage.getItem('flag-roll'))
 
             sessionStorage.setItem('flag-roll', false)
-            console.log("flag down -- " + sessionStorage.getItem('flag-roll'))
             setTimeout(function() {
                 sessionStorage.setItem('flag-roll', true)
-                console.log("reset -- " + sessionStorage.getItem('flag-roll'))
-            }, 500)
+            }, 300)
+
             if (event.deltaY > 0)
                 sessionStorage.setItem('roll', parseInt(sessionStorage.getItem('roll')) + 1) //Increment
             else if (event.deltaY < 0)
@@ -178,15 +226,77 @@ document.addEventListener("DOMContentLoaded", function() {
             if (parseInt(sessionStorage.getItem('roll')) >= 1) { // Check roll down
                 sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) + 1)
                 sessionStorage.setItem('roll', 0)
+                checkandchangepage('forward', navDivs)
             } else if (parseInt(sessionStorage.getItem('roll')) <= -1) { //  Check roll up
                 sessionStorage.setItem('idpage', parseInt(sessionStorage.getItem('idpage')) - 1)
                 sessionStorage.setItem('roll', 0)
+                checkandchangepage('backward', navDivs)
             }
-
-            checkandchangepage(navDivs)
-
         }
+    })
 
+    logoButton.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 0)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("home-content.html");
+        })
+    })
 
-    });
+    homeDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 0)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("home-content.html");
+        })
+    })
+    aboutDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 1)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("about-content.html");
+        })
+    })
+    cvDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 2)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("cv-content.html");
+        })
+    })
+    contactDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 3)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("contact-content.html");
+        })
+    })
+
+    discordIcon.addEventListener("mouseover", function() {
+        if (discordtag)
+            discordhover.innerHTML = " Copy to clipboard"
+        discordhover.visibility = "visible";
+        discordhover.classList.add("opacity-in")
+    })
+    discordIcon.addEventListener("click", function() {
+        discordtag = false
+        setTimeout(function() {
+            discordhover.innerHTML = " Copy to clipboard"
+            discordtag = true
+            discordhoverupdate(discordIcon)
+        }, 1000)
+        discordhover.style.top = discordIcon.offsetTop - 25 + "px"
+        discordhover.style.left = discordIcon.offsetLeft - 43 + "px"
+        navigator.clipboard.writeText("Sphinx#7851");
+        discordhover.innerHTML = " Copied : Sphinx#7851"
+    })
+    discordIcon.addEventListener("mouseleave", function() {
+        discordhover.innerHTML = " Copy to clipboard"
+        discordhoverupdate(discordIcon)
+        discordhover.classList.remove("opacity-in")
+        discordhover.classList.add("opacity-out")
+        setTimeout(function() {
+            discordhover.classList.remove("opacity-out")
+        }, 2000)
+    })
 })
