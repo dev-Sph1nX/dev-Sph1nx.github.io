@@ -1,0 +1,90 @@
+.about-flex {
+    display: flex;
+    width: 100vw;
+}
+
+.about-left {
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+}
+
+.about-img-container {
+    background-image: url('img/about\ me.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-left: 40px;
+    width: 400px;
+    height: 400px;
+}
+
+.about-right {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-title {
+    height: 30%;
+}
+
+.about-h2 {
+    color: grey;
+    font-size: 15px;
+}
+
+.about-h1 {
+    font-size: 60px;
+}
+
+.about-underline {
+    margin-top: -5px;
+    background-color: white;
+    height: 4px;
+    width: 100px;
+}
+
+.about-desc {
+    height: 50%;
+}
+
+.about-p {
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+.about-info-title {
+    color: grey;
+    font-weight: bold;
+}
+
+.about-info {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-info table {
+    width: 40vw;
+    border: solid 1px white;
+    border-radius: 20px;
+    height: 10vh;
+    padding: 10px 20px;
+}
+
+.about-info tr {
+    height: 50%;
+}
+
+.about-but {
+    height: 20%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.dlcv {
+    width: 130px;
+    text-align: center;
+}
