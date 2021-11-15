@@ -1,6 +1,6 @@
 .about-flex {
     display: flex;
-    width: 100vw;
+    width: 80vw;
 }
 
 .about-left {
@@ -50,7 +50,6 @@
 }
 
 .about-p {
-    margin-top: 20px;
     margin-right: 100px;
 }
 
