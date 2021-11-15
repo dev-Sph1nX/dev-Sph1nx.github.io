@@ -1,0 +1,83 @@
+.contact-all {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 80vw;
+}
+
+.contact-right {
+    width: 62.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 5vh 40px;
+}
+
+.contact-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.contact-h2 {
+    color: grey;
+    font-size: 15px;
+}
+
+.contact-h1 {
+    font-size: 60px;
+}
+
+.contact-form {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.contact-form input::placeholder,
+.contact-form .message::placeholder {
+    color: white;
+    font-size: 20px;
+    font-family: 'bpg_glahoregular';
+}
+
+.contact-form .input {
+    color: white;
+    background-color: black;
+    border: none;
+    border-left: 1px solid white;
+    font-size: 25px;
+    width: 40vw;
+    padding: 5px 10px;
+}
+
+.contact-form .message {
+    min-width: 40vw;
+    max-width: 40vw;
+    height: 10vh;
+    max-height: 11vh;
+    min-height: 5vh;
+    font-family: 'bpg_glahoregular';
+}
+
+
+/* .contact-form-underline { Bon sur petit ecran faudrait le faire en js mais flemme
+    height: 1px;
+    width: 635.2px;
+    background-color: white;
+    margin-right: 0;
+    margin-bottom: 2vh;
+} */
+
+.contact-left {
+    width: 37.5%;
+    margin: 5vh 0;
+}
+
+.contact-underline {
+    margin-top: -5px;
+    background-color: white;
+    height: 4px;
+    width: 80px;
+}

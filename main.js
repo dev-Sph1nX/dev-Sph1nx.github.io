@@ -105,7 +105,7 @@ function checkandchangepage(tag, navDivs) {
             } else if (tag == 'backward') {
                 pagetransitoleft("contact")
             }
-            sessionStorage.setItem('idpage', 3)
+            sessionStorage.setItem('idpage', 4)
             underlined(navDivs)
             break
 
@@ -127,13 +127,21 @@ function checkandchangepage(tag, navDivs) {
             break
         case "2":
             if (tag == 'forward') {
-                pagetransitoright("cv")
+                pagetransitoright("skills")
             } else if (tag == 'backward') {
-                pagetransitoleft("cv")
+                pagetransitoleft("skills")
             }
             underlined(navDivs)
             break
         case "3":
+            if (tag == 'forward') {
+                pagetransitoright("project")
+            } else if (tag == 'backward') {
+                pagetransitoleft("project")
+            }
+            underlined(navDivs)
+            break
+        case "4":
             if (tag == 'forward') {
                 pagetransitoright("contact")
             } else if (tag == 'backward') {
@@ -164,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let latext = document.querySelector(".la-text")
     let body = document.querySelector(".body")
     let indicpageDiv = document.querySelector(".b-footer-indic-page")
-    let logoButton = document.querySelector(".b-header-left p")
 
     let header = document.querySelector(".b-header")
     let main = loadmaincontent()
@@ -172,7 +179,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let homeDiv = document.querySelector(".home")
     let aboutDiv = document.querySelector(".about")
-    let cvDiv = document.querySelector(".cv")
+    let skillsDiv = document.querySelector(".skills")
+    let projectDiv = document.querySelector(".project")
     let contactDiv = document.querySelector(".contact")
 
     let discordIcon = document.querySelector(".discord")
@@ -182,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sessionStorage.setItem('roll', 0)
     sessionStorage.setItem('flag-roll', true)
 
-    let navDivs = [homeDiv, aboutDiv, cvDiv, contactDiv]
+    let navDivs = [homeDiv, aboutDiv, skillsDiv, projectDiv, contactDiv]
     sessionStorage.setItem('idpage', 0)
 
     let underlineDiv = loadunderline()
@@ -235,14 +243,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
 
-    logoButton.addEventListener("click", function() {
-        sessionStorage.setItem('idpage', 0)
-        underlined(navDivs)
-        $(function() {
-            $("#maincontent").load("home-content.html");
-        })
-    })
-
     homeDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 0)
         underlined(navDivs)
@@ -257,15 +257,22 @@ document.addEventListener("DOMContentLoaded", function() {
             $("#maincontent").load("about-content.html");
         })
     })
-    cvDiv.addEventListener("click", function() {
+    skillsDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 2)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("cv-content.html");
+            $("#maincontent").load("skills-content.html");
+        })
+    })
+    projectDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 3)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("project-content.html");
         })
     })
     contactDiv.addEventListener("click", function() {
-        sessionStorage.setItem('idpage', 3)
+        sessionStorage.setItem('idpage', 4)
         underlined(navDivs)
         $(function() {
             $("#maincontent").load("contact-content.html");

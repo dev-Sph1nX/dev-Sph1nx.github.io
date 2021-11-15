@@ -1,12 +1,14 @@
 .about-flex {
     display: flex;
     width: 80vw;
+    height: 100%;
 }
 
 .about-left {
     width: 40vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .about-img-container {
@@ -20,7 +22,7 @@
 }
 
 .about-right {
-    margin-left: 40px;
+    margin: 5vh 40px;
     display: flex;
     flex-direction: column;
 }
@@ -49,27 +51,24 @@
     height: 50%;
 }
 
-.about-p {
-    margin-right: 100px;
-}
-
 .about-info-title {
     color: grey;
     font-weight: bold;
 }
 
 .about-info {
-    margin-top: 20px;
+    margin: 0.5vh 0;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .about-info table {
+    margin-top: 20px;
     width: 40vw;
     border: solid 1px white;
     border-radius: 20px;
-    height: 10vh;
+    height: 12vh;
     padding: 10px 20px;
 }
 
@@ -80,10 +79,9 @@
 .about-but {
     height: 20%;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .dlcv {
-    width: 130px;
     text-align: center;
 }
