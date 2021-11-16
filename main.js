@@ -96,7 +96,14 @@ function pagetransitoleft(nextpage) {
         slideDiv.style.left = 0;
     }, 100)
 }
-
+// function test(){
+//     let test = document.querySelector(".about-left");
+//     console.log("about")
+//     test.addEventListener("click", function(){
+//         test.classList.add("about-left-entry")
+//         console.log("clicked")
+//     })
+// }
 function checkandchangepage(tag, navDivs) {
     switch (sessionStorage.getItem('idpage')) {
         case "-1": // when on the home page, user go back - return to the last page
@@ -124,6 +131,7 @@ function checkandchangepage(tag, navDivs) {
                 pagetransitoleft("about")
             }
             underlined(navDivs)
+            // test()
             break
         case "2":
             if (tag == 'forward') {
@@ -186,6 +194,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let discordIcon = document.querySelector(".discord")
     let discordhover = document.querySelector(".discord-hover")
     let discordtag = true
+
+    
 
     sessionStorage.setItem('roll', 0)
     sessionStorage.setItem('flag-roll', true)

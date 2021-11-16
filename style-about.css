@@ -10,7 +10,17 @@
     justify-content: center;
     align-items: center;
 }
-
+.about-left-entry{
+    animation: about-leftpart-entry .5s ease-out;
+}
+@keyframes leftpart-entry{
+    from {
+        margin-right: 15vw;
+    }
+    to{
+        margin-right: 0;
+    }
+}
 .about-img-container {
     background-image: url('img/about\ me.jpg');
     background-repeat: no-repeat;
