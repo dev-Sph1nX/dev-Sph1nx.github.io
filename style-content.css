@@ -32,13 +32,23 @@ html {
     background-color: white;
     color: black;
     cursor: pointer;
+    transition: .2s linear;
 }
-
+.button:hover{
+    color: white;
+    background-color: rgb(255, 111, 111);
+}
 ::selection {
     background-color: white;
     color: #0D0D0D;
 }
 
+
+.lettre{
+    font-size: large;
+    font-family: 'bpg_glahobold';
+    color: rgb(255, 111, 111);
+}
 
 /*  -------- HEADER --------*/
 
@@ -55,8 +65,8 @@ html {
 .b-header-right {
     display: flex;
     justify-content: space-evenly;
-    width: 60vw;
-    margin-left: 20vw;
+    width: 80vw;
+    margin-left: 10vw;
 }
 
 .b-header-right div {
@@ -65,7 +75,7 @@ html {
 }
 
 .b-header-right div:hover {
-    color: grey;
+    color: rgb(255, 111, 111);
 }
 
 .underline {

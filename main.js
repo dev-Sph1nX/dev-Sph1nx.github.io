@@ -143,13 +143,29 @@ function checkandchangepage(tag, navDivs) {
             break
         case "3":
             if (tag == 'forward') {
+                pagetransitoright("education")
+            } else if (tag == 'backward') {
+                pagetransitoleft("education")
+            }
+            underlined(navDivs)
+            break
+        case "4":
+            if (tag == 'forward') {
+                pagetransitoright("we")
+            } else if (tag == 'backward') {
+                pagetransitoleft("we")
+            }
+            underlined(navDivs)
+            break
+        case "5":
+            if (tag == 'forward') {
                 pagetransitoright("project")
             } else if (tag == 'backward') {
                 pagetransitoleft("project")
             }
             underlined(navDivs)
             break
-        case "4":
+        case "6":
             if (tag == 'forward') {
                 pagetransitoright("contact")
             } else if (tag == 'backward') {
@@ -188,6 +204,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let homeDiv = document.querySelector(".home")
     let aboutDiv = document.querySelector(".about")
     let skillsDiv = document.querySelector(".skills")
+    let educationDiv = document.querySelector(".education")
+    let weDiv = document.querySelector(".we")
     let projectDiv = document.querySelector(".project")
     let contactDiv = document.querySelector(".contact")
 
@@ -195,12 +213,24 @@ document.addEventListener("DOMContentLoaded", function() {
     let discordhover = document.querySelector(".discord-hover")
     let discordtag = true
 
+    setInterval(function(){
+        if(sessionStorage.getItem("idpage") == 0){
+            let moreaboutme = document.querySelector(".but-more-about-me")
+            moreaboutme.addEventListener("click", function(){
+                sessionStorage.setItem('idpage', 1)
+                underlined(navDivs)
+                $(function() {
+                    $("#maincontent").load("about-content.html");
+                })
+            })
+        }
+    }, 2000)
     
 
     sessionStorage.setItem('roll', 0)
     sessionStorage.setItem('flag-roll', true)
 
-    let navDivs = [homeDiv, aboutDiv, skillsDiv, projectDiv, contactDiv]
+    let navDivs = [homeDiv, aboutDiv, skillsDiv, educationDiv, weDiv, projectDiv, contactDiv]
     sessionStorage.setItem('idpage', 0)
 
     let underlineDiv = loadunderline()
@@ -288,6 +318,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $("#maincontent").load("contact-content.html");
         })
     })
+    
 
     discordIcon.addEventListener("mouseover", function() {
         if (discordtag)

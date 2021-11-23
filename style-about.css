@@ -47,6 +47,7 @@
 }
 
 .about-h1 {
+    color: white;
     font-size: 60px;
 }
 
@@ -91,7 +92,10 @@
     display: flex;
     align-items: flex-start;
 }
-
+.button a {
+    color: black;
+    text-decoration: none;
+}
 .dlcv {
     text-align: center;
 }
