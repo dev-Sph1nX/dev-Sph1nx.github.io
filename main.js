@@ -131,7 +131,7 @@ function checkandchangepage(tag, navDivs) {
                 pagetransitoleft("about")
             }
             underlined(navDivs)
-            // test()
+                // test()
             break
         case "2":
             if (tag == 'forward') {
@@ -213,10 +213,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let discordhover = document.querySelector(".discord-hover")
     let discordtag = true
 
-    setInterval(function(){
-        if(sessionStorage.getItem("idpage") == 0){
+    setInterval(function() {
+        if (sessionStorage.getItem("idpage") == 0) {
             let moreaboutme = document.querySelector(".but-more-about-me")
-            moreaboutme.addEventListener("click", function(){
+            moreaboutme.addEventListener("click", function() {
                 sessionStorage.setItem('idpage', 1)
                 underlined(navDivs)
                 $(function() {
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
         }
     }, 2000)
-    
+
 
     sessionStorage.setItem('roll', 0)
     sessionStorage.setItem('flag-roll', true)
@@ -304,21 +304,35 @@ document.addEventListener("DOMContentLoaded", function() {
             $("#maincontent").load("skills-content.html");
         })
     })
-    projectDiv.addEventListener("click", function() {
+    educationDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 3)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("education-content.html");
+        })
+    })
+    weDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 4)
+        underlined(navDivs)
+        $(function() {
+            $("#maincontent").load("we-content.html");
+        })
+    })
+    projectDiv.addEventListener("click", function() {
+        sessionStorage.setItem('idpage', 5)
         underlined(navDivs)
         $(function() {
             $("#maincontent").load("project-content.html");
         })
     })
     contactDiv.addEventListener("click", function() {
-        sessionStorage.setItem('idpage', 4)
+        sessionStorage.setItem('idpage', 6)
         underlined(navDivs)
         $(function() {
             $("#maincontent").load("contact-content.html");
         })
     })
-    
+
 
     discordIcon.addEventListener("mouseover", function() {
         if (discordtag)

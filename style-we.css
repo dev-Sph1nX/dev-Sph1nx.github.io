@@ -1,0 +1,19 @@
+.we-flex {
+    height: 100%;
+    width: 60vw;
+}
+
+.we-title {
+    text-align: center;
+    margin: 5vh 0;
+}
+
+.we-h2 {
+    color: grey;
+    font-size: 15px;
+}
+
+.we-h1 {
+    font-size: 60px;
+    text-decoration: underline;
+}
