@@ -18,11 +18,17 @@
     text-decoration: underline;
 }
 
+.edu-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .edu-iut,
 .edu-high {
     display: flex;
     align-items: center;
-    margin: 50px 0;
+    margin: 20px 0;
 }
 
 .edu-high i,
