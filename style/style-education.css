@@ -1,0 +1,54 @@
+.edu-flex {
+    height: 100%;
+    width: 60vw;
+}
+
+.edu-title {
+    text-align: center;
+    margin: 5vh 0;
+}
+
+.edu-h2 {
+    color: grey;
+    font-size: 15px;
+}
+
+.edu-h1 {
+    font-size: 60px;
+    text-decoration: underline;
+}
+
+.edu-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.edu-iut,
+.edu-high {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.edu-high i,
+.edu-iut i {
+    margin-right: 40px;
+}
+
+.iut-title,
+.high-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.iut-title h1,
+.high-title h1 {
+    margin-right: 20px;
+}
+
+.iut-title p,
+.high-title p {
+    margin-top: 10px;
+}

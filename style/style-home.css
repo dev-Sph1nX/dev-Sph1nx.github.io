@@ -1,0 +1,10 @@
+.home-h1 {
+    font-size: 60px;
+}
+
+.home-p {
+    width: 100vw;
+    text-align: center;
+    color: grey;
+    margin-bottom: 20px;
+}

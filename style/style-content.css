@@ -1,0 +1,228 @@
+html {
+    background-color: #0D0D0D;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.fondu-in {
+    animation: fondu-in .2s ease-in;
+}
+
+@keyframes fondu-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.body {
+    color: white;
+    font-family: 'bpg_glahoregular';
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: .2s linear;
+}
+.button:hover{
+    color: white;
+    background-color: rgb(255, 111, 111);
+}
+::selection {
+    background-color: white;
+    color: #0D0D0D;
+}
+
+
+.lettre{
+    font-size: large;
+    font-family: 'bpg_glahobold';
+    color: rgb(255, 111, 111);
+}
+
+/*  -------- HEADER --------*/
+
+.b-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    font-family: 'bpg_glahobold';
+}
+
+.b-header-right {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+.b-header-right div {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.b-header-right div:hover {
+    color: rgb(255, 111, 111);
+}
+
+.underline {
+    position: absolute;
+    height: 2px;
+    width: 20px;
+    left: 0px;
+    top: 0px;
+    /* // top : height + top   */
+    background-color: white;
+    transition: .2s ease-in;
+}
+
+.underlined {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* 
+.underlined::after {
+    content: "";
+    width: 20px;
+    padding-top: 2px;
+    border-bottom: 2px solid white;
+    transform: translateX(var(--percent-translate));
+} */
+
+.b-header-right div {
+    margin: 20px;
+}
+
+
+/*  -------- CONTENT --------*/
+
+.content-position {
+    position: absolute;
+    left: 0;
+    top: 15vh;
+}
+
+.b-content-section {
+    position: relative;
+    overflow: hidden;
+    height: 70vh;
+    width: 100vw;
+}
+
+#maincontent {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    transition: .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-right {
+    left: -100vw !important;
+}
+
+#slidecontent {
+    position: absolute;
+    left: 100vw;
+    height: 100%;
+    width: 100%;
+    transition: .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-left {
+    left: 0 !important;
+}
+
+
+/*  -------- FOOTER --------*/
+
+.b-footer {
+    position: absolute;
+    top: 85vh;
+    left: 0;
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.b-footer-icons {
+    display: flex;
+    /* border: tomato 1px solid; */
+}
+
+.b-footer-icons img {
+    cursor: pointer;
+    margin: 20px;
+    width: 30px;
+}
+
+.discord-hover {
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    margin-right: -25px;
+    background-color: white;
+    color: black;
+    position: absolute;
+    visibility: hidden;
+    font-size: 2vh;
+}
+
+.discord-hover::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  white transparent transparent transparent;
+}
+
+.discord:hover .discord-hover {
+    visibility: visible;
+}
+
+.opacity-in {
+    animation: fondu-in .2s linear both;
+}
+
+.opacity-out {
+    animation: fondu-out .2s linear backwards;
+}
+
+@keyframes fondu-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
