@@ -35,7 +35,9 @@
     border-collapse: collapse;
     border-bottom: 1px solid white;
 }
-
+.project-table a{
+    color: rgb(255, 111, 111);
+}
 .project-table thead {
     height: 3vh !important;
     color: grey;

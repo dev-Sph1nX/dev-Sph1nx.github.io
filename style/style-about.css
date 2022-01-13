@@ -25,7 +25,7 @@
 }
 
 .about-img-container {
-    background-image: url('img/about\ me2.jpg');
+    background-image: url('../img/about\ me2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

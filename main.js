@@ -42,9 +42,9 @@ function loadmaincontent() {
     return document.querySelector("#maincontent")
 }
 
-function changepageto(idDiv, filename) {
+function changepageto(idDiv, filename) { // C'est dans cette fonction que je chnage le contenu de ma div principal, où il y a le contenu
     $(function() {
-        $("#" + idDiv).load(filename + "-content.html");
+        $("#" + idDiv).load("html/" + filename + "-content.html");
     })
 }
 
@@ -101,22 +101,23 @@ function pagetransitoleft(nextpage) {
 //     console.log("about")
 //     test.addEventListener("click", function(){
 //         test.classList.add("about-left-entry")
-//         console.log("clicked")
 //     })
+//         console.log("clicked")
 // }
-function checkandchangepage(tag, navDivs) {
-    switch (sessionStorage.getItem('idpage')) {
-        case "-1": // when on the home page, user go back - return to the last page
-            if (tag == 'forward') {
+
+function checkandchangepage(tag, navDivs) { // La fonction s'active dès lors que l'on scroll (en haut ou en bas peu importe) 
+    switch (sessionStorage.getItem('idpage')) { // Recupere l'id de la page sur laquelle on est 
+        case "-1": // La valeur est a -1 quand, sur la page d'acceuil, on va en arriére et donc on va sur la page contact
+            if (tag == 'forward') { // On regarde sur on 'avance' ou si on 'recule' pour savoir si on fait la transition vers la droite ou vers la gauche
                 pagetransitoright("contact")
             } else if (tag == 'backward') {
                 pagetransitoleft("contact")
             }
-            sessionStorage.setItem('idpage', 4)
-            underlined(navDivs)
+            sessionStorage.setItem('idpage', 6) // Change l'id pour mettre celui_ de la derniére page : Contact
+            underlined(navDivs) // On appelle underlined() pour dire au petit souligenement dans la navbar que l'on a changé de page
             break
 
-        case "0":
+        case "0": // Même principe pour la page home et le reste des pages
             if (tag == 'forward') {
                 pagetransitoright("home")
             } else if (tag == 'backward') {
@@ -124,6 +125,7 @@ function checkandchangepage(tag, navDivs) {
             }
             underlined(navDivs)
             break
+        
         case "1":
             if (tag == 'forward') {
                 pagetransitoright("about")
@@ -165,7 +167,8 @@ function checkandchangepage(tag, navDivs) {
             }
             underlined(navDivs)
             break
-        case "6":
+        
+            case "6": // Ici par exemple, on arrive sur la page Contact
             if (tag == 'forward') {
                 pagetransitoright("contact")
             } else if (tag == 'backward') {
@@ -173,7 +176,7 @@ function checkandchangepage(tag, navDivs) {
             }
             underlined(navDivs)
             break
-        default: // when on the last page, user keep going - return to the home page
+        default: // Cela s'active quand sur la page Contact on continue de scroll, on reviens à la page d'acceuil 
             sessionStorage.setItem('idpage', 0)
             if (tag == 'forward') {
                 pagetransitoright("home")
@@ -220,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 sessionStorage.setItem('idpage', 1)
                 underlined(navDivs)
                 $(function() {
-                    $("#maincontent").load("about-content.html");
+                    $("#maincontent").load("html/about-content.html");
                 })
             })
         }
@@ -287,49 +290,49 @@ document.addEventListener("DOMContentLoaded", function() {
         sessionStorage.setItem('idpage', 0)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("home-content.html");
+            $("#maincontent").load("html/home-content.html");
         })
     })
     aboutDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 1)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("about-content.html");
+            $("#maincontent").load("html/about-content.html");
         })
     })
     skillsDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 2)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("skills-content.html");
+            $("#maincontent").load("html/skills-content.html");
         })
     })
     educationDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 3)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("education-content.html");
+            $("#maincontent").load("html/education-content.html");
         })
     })
     weDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 4)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("we-content.html");
+            $("#maincontent").load("html/we-content.html");
         })
     })
     projectDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 5)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("project-content.html");
+            $("#maincontent").load("html/project-content.html");
         })
     })
     contactDiv.addEventListener("click", function() {
         sessionStorage.setItem('idpage', 6)
         underlined(navDivs)
         $(function() {
-            $("#maincontent").load("contact-content.html");
+            $("#maincontent").load("html/contact-content.html");
         })
     })
 

@@ -73,8 +73,12 @@
 } */
 
 .contact-left {
-    width: 37.5%;
+    width: 20%;
     margin: 5vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .contact-underline {
@@ -82,4 +86,59 @@
     background-color: white;
     height: 4px;
     width: 80px;
+}
+
+.contact-content{
+    text-align: end;
+    margin-right: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.ss{
+    text-decoration: underline;
+    color: rgb(255, 111, 111);
+}
+.c-middle{
+    height: 100%;
+    width: 1px;
+    background-color: white;
+    margin: 20vh 0;
+}
+.contact-right img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 2vh;
+}
+.contact-right .colin, .contact-right .damas{
+    background-color: whitesmoke;
+    border-radius: 10%;
+    margin: 2vh;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 15px 5px rgb(255, 111, 111, 0.2);
+}
+.teachers{
+    display: flex;
+    flex-direction: row;
+}
+.colin-txt, .damas-txt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh;
+}
+.references-title{
+    margin-top: 5vh;
+    color: grey;
+    
+}
+.blabl{
+    margin-top: 20px;
 }
